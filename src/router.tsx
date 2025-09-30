@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router";
 import { HomePage } from "./pages/HomePage";
 import { AuthPage } from "./pages/AuthPage";
-import { AuthLayout } from "./layouts/auth-layout";
+import AuthLayout from "./layouts/auth-layout";
 
 function Routing() {
   return (

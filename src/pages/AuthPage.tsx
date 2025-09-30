@@ -1,6 +1,6 @@
 import { Button, Card } from "pixel-retroui";
 import Icon from "../components/shared/icons";
-import { Icons } from "../lib/types";
+import { Icons } from "../types/icons";
 import { useAuth } from "../contexts/auth-context";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
@@ -22,7 +22,7 @@ export function AuthPage() {
         className="absolute z-0 w-full h-full 
                      bg-[linear-gradient(90deg,#80808012_1px,transparent_0),linear-gradient(180deg,#80808012_1px,transparent_0)] 
                      bg-[length:40px_40px,40px_40px]"
-      ></div>
+      />
       <Card
         borderColor="black"
         shadowColor="#c381b5"

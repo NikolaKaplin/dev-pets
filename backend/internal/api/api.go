@@ -18,6 +18,7 @@ var corsConf = cors.Config{
 	AllowHeaders:     "Accept,Authorization,Content-Type,X-CSRF-Token",
 	ExposeHeaders:    "Set-Cookie",
 	AllowCredentials: true,
+	AllowOrigins: "*",
 	MaxAge:           300,
 }
 
@@ -29,7 +30,7 @@ var limitierConf = limiter.Config{
 	},
 }
 
-func (s *Server) mountMiddlewares() {
+func mountMiddlewares(s *Server) {
 	s.App.Get("/ping", func(c *fiber.Ctx) error {
 		return c.SendString("pong")
 	})

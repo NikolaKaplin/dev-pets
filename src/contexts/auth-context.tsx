@@ -2,13 +2,12 @@ import {
   createContext,
   ReactNode,
   useContext,
-  useState,
   useEffect,
+  useState,
 } from "react";
 import { User } from "../types/user";
 import api from "../lib/api-client";
 import { env } from "../lib/env";
-import LoadingSpinner from "../components/ui/LoadingSpinner";
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -52,7 +51,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   if (loading) {
-    return <LoadingSpinner />;
+    return <>хуй</>;
   }
 
   return (

@@ -2,12 +2,30 @@ use tauri::menu::{Menu, MenuItem};
 use tauri::tray::TrayIconBuilder;
 mod handlers;
 mod utils;
+use crate::constants::DEFAULT_SQL_SCHEMA;
 use crate::handlers::pet_window::pet_window_toggle;
+use crate::{
+    constants::DB_NAME_TYPE
+};
+use tauri_plugin_sql::{Migration, MigrationKind};
 
+mod constants;
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+        let migrations = vec![Migration {
+        version: 1,
+        description: "init",
+        sql: DEFAULT_SQL_SCHEMA,
+        kind: MigrationKind::Up,
+    }];
     tauri::Builder::default()
+        .plugin(tauri_plugin_sql::Builder::new().build())
         .plugin(tauri_plugin_opener::init())
+        .plugin(
+            tauri_plugin_sql::Builder::default()
+                .add_migrations(DB_NAME_TYPE, migrations)
+                .build(),
+        )
         .setup(|app| {
             let _pet_window_init =
                 tauri::WebviewWindowBuilder::new(app, "pet", tauri::WebviewUrl::App("/pet".into()))

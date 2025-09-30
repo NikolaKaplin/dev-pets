@@ -1,4 +1,4 @@
-import { Icons } from "../../lib/types";
+import { Icons } from "../../types/icons";
 
 interface Icon {
   name: Icons;
